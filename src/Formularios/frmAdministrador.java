@@ -9,6 +9,11 @@ import Clases.Ticket;
 import java.awt.Color;
 import java.sql.ResultSet;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -52,7 +57,7 @@ public class frmAdministrador extends javax.swing.JFrame {
 
             //ResultSet rs = objConexion.consultarRegistros("exec usp_bandeja_solitante "+ objTicket.getId_solicitante());
             ResultSet rs = objConexion.consultarRegistros("exec usp_bandeja_administrador " + a);
-            
+
             //
             while (rs.next()) {
                 Object dato[] = new Object[12];
@@ -66,7 +71,7 @@ public class frmAdministrador extends javax.swing.JFrame {
         }
 
     }
-    
+
     public void mostrarCantidad() {
         int r = 0;
 
@@ -78,7 +83,7 @@ public class frmAdministrador extends javax.swing.JFrame {
                     + "AS PENDIENTES_ATENCION, SUM(CASE WHEN id_estadoTicket IN (3,4) THEN 1 ELSE 0 END) "
                     + "AS ATENDIDOS_OBSERVADOS FROM TB_TICKET WHERE flg_activo=1");
             while (rs.next()) {
-               // System.out.println(rs.getString("todos_count"));
+                // System.out.println(rs.getString("todos_count"));
                 lblTotalTickets.setText(rs.getString("TOTAL"));
                 lblPendientesAsig.setText(rs.getString("PENDIENTES_ASIGNACION"));
                 lblPendientesAten.setText(rs.getString("PENDIENTES_ATENCION"));
@@ -89,9 +94,6 @@ public class frmAdministrador extends javax.swing.JFrame {
             System.out.println(e);
         }
     }
-    
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -213,6 +215,11 @@ public class frmAdministrador extends javax.swing.JFrame {
         lblReporteAdm.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 lblReporteAdmMouseMoved(evt);
+            }
+        });
+        lblReporteAdm.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblReporteAdmMouseClicked(evt);
             }
         });
         jPanel2.add(lblReporteAdm, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 140, 30));
@@ -545,18 +552,39 @@ public class frmAdministrador extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-         mostrarDatosTabla(1);
+        mostrarDatosTabla(1);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-         mostrarDatosTabla(2);
+        mostrarDatosTabla(2);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-         mostrarDatosTabla(3);
+        mostrarDatosTabla(3);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void lblReporteAdmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblReporteAdmMouseClicked
+
+        Conexion objConexion = new Conexion();
+
+        String ruta = "C:/Users/AndroidUnlock/Desktop/FINALFINALFINAL 3.07/MesaDeAyuda 03.07/MesaDeAyuda03.07/src/reportes/report";
+        JasperReport miJr = null;
+        try {
+            miJr = (JasperReport) JRLoader.loadObjectFromFile(ruta);
+            JasperPrint miJrPrint = JasperFillManager.fillReport(miJr, null, objConexion.getConex());
+            JasperViewer miJrViewer = new JasperViewer(miJrPrint);
+            miJrViewer.setVisible(true);
+            miJrViewer.setTitle(ruta);
+            
+            
+        } catch (Exception e) {
+            System.out.println("Error al generar reporte: " + e);
+        }
+
+
+    }//GEN-LAST:event_lblReporteAdmMouseClicked
 
     /**
      * @param args the command line arguments

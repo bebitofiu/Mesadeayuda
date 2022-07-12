@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b311b00e-c092-49db-9475-c3e0829ca6c4">
+	<property name="ireport.zoom" value="1.2100000000000009"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="17"/>
+	<queryString>
+		<![CDATA[exec usp_bandeja_administrador 0]]>
+	</queryString>
+	<field name="nroTicket" class="java.lang.String"/>
+	<field name="fechaRegistro" class="java.lang.String"/>
+	<field name="solicitante" class="java.lang.String"/>
+	<field name="oficina" class="java.lang.String"/>
+	<field name="cargo" class="java.lang.String"/>
+	<field name="tipo" class="java.lang.String"/>
+	<field name="asunto" class="java.lang.String"/>
+	<field name="estado" class="java.lang.String"/>
+	<field name="fechaAsignacion" class="java.lang.String"/>
+	<field name="prioridad" class="java.lang.String"/>
+	<field name="tecnico" class="java.lang.String"/>
+	<field name="fechaAtencion" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="150" y="0" width="252" height="50" uuid="cf54cba4-f424-447a-939d-57d50d5107f0"/>
+				<textElement>
+					<font size="30"/>
+				</textElement>
+				<text><![CDATA[Reporte de Tickets]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="39" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="2" width="68" height="20" uuid="176377c4-b464-420c-9165-45764baaf2fd"/>
+				<text><![CDATA[Nª Ticket]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="68" y="2" width="100" height="20" uuid="8e6388f5-e2ba-45e4-abef-2dfb8a97e7d3"/>
+				<text><![CDATA[fechaRegistro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="168" y="2" width="100" height="20" uuid="6228570d-39dd-4f9f-9f07-a83f2d88e318"/>
+				<text><![CDATA[solicitante]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="268" y="2" width="100" height="20" uuid="794091b2-c81a-432f-999b-8250f6975c7c"/>
+				<text><![CDATA[estado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="368" y="2" width="100" height="20" uuid="6a6dfa37-a3a9-4b05-99fb-078869026e15"/>
+				<text><![CDATA[tecnico]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="44" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="68" height="20" uuid="478a0d77-6b06-489b-a735-cdbcc8587c8d"/>
+				<textFieldExpression><![CDATA[$F{nroTicket}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="68" y="0" width="100" height="20" uuid="a018350b-8aff-4da0-bccb-a0fe906d96b5"/>
+				<textFieldExpression><![CDATA[$F{fechaRegistro}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="168" y="0" width="100" height="20" uuid="87ce2b7e-a2fa-461b-a904-b746276f0609"/>
+				<textFieldExpression><![CDATA[$F{solicitante}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="268" y="1" width="100" height="20" uuid="65617c2d-dc54-448f-9d0b-667e969b04c1"/>
+				<textFieldExpression><![CDATA[$F{estado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="368" y="1" width="100" height="20" uuid="d15986db-4088-4a4d-9dcf-aa8be66502a4"/>
+				<textFieldExpression><![CDATA[$F{tecnico}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -11,7 +11,17 @@ public class Conexion {
     
     
 //    private String CadenaConexion;
-//    private Connection conex;
+   private Connection conex;
+
+    public Connection getConex() {
+        return conex;
+    }
+
+    public void setConex(Connection conex) {
+        this.conex = conex;
+    }
+   
+   
 //    private Statement stmt;
 //    
 //    public Conexion() throws SQLException {
@@ -36,7 +46,7 @@ public class Conexion {
     public String usuario="sa";
     public String pass="1n1a*BD";
     public String url="jdbc:sqlserver://172.16.27.11:1433;databaseName=BD_HELP_DESK;";
-    public Connection cn = null;
+//    public Connection cn = null;
     
 //      Connection conn=null;
 //    

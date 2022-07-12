@@ -5,7 +5,7 @@
 package Clases;
 
 /**
- *
+ * 
  * @author JC
  */
 public class Oficina {
